@@ -65,7 +65,7 @@ function pre_install_kernel_debs__adjust_dropbear_configuration() {
 			# /usr/share/initramfs-tools/hooks/dropbear will automatically add 'id_ecdsa.pub' to authorized_keys file
 			# during mkinitramfs of update-initramfs
 			#cat "${dropbear_dir}"/id_ecdsa.pub > "${SDCARD}"/etc/dropbear-initramfs/authorized_keys
-			CRYPTROOT_SSH_UNLOCK_KEY_NAME="${VENDOR}_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${DESKTOP_ENVIRONMENT}".key
+			CRYPTROOT_SSH_UNLOCK_KEY_NAME="${VENDOR}_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${DESKTOP_ENVIRONMENT}_${KERNEL_MAJOR_MINOR}_${EXTRA_IMAGE_SUFFIXES}".key
 			# copy dropbear ssh key to image output dir for convenience
 			cp "${dropbear_dir}"/id_ecdsa "${DEST}/images/${CRYPTROOT_SSH_UNLOCK_KEY_NAME}"
 			display_alert "Extension: ${EXTENSION}: SSH private key for dropbear (initramfs) has been copied to:" \
